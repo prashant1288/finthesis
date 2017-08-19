@@ -1,0 +1,26 @@
+<div *ngIf="showModal" class="modal-backdrop fade in"  ></div>
+<div class="modal fade in" style="display:block" *ngIf="showModal"  id="{{id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog" [class.modal-lg]="size=='large' && !maxScreen" [class.modal-sm]="size=='small' && !maxScreen" 
+    [class.modal-xl]="size=='xtraLarge' && !maxScreen" [class.modal-fs]="maxScreen">
+        <div class="modal-content" [class.modal-with-tabs]="modalWithTabs" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                    <div class="pull-right padding-left">
+                        <button type="button" *ngIf="maximizable" class="btn btn-default ripple" (click)="toggleScreen()"><span [class.ion-arrow-shrink]="maxScreen" [class.ion-arrow-expand]="!maxScreen"></span></button>
+                        <button type="button" class="btn btn-default ripple" *ngIf="closable" (click)="emitClose()"><span class="ion-close"></span></button>
+                    </div>
+                    <ng-content select="modal-title"></ng-content>
+                </h5>
+                <div *ngIf="modalWithTabs">
+                    <ng-content select="modal-tabs"></ng-content>
+                </div>
+            </div>
+            <div class="modal-body modal-overflow" [class.modal-overflow]="!maxScreen" [class.modal-overflowFS]="maxScreen" (scroll)="onScroll($event)">
+                <ng-content select="modal-body"></ng-content>
+            </div>
+            <div class="modal-footer">
+                <ng-content select="modal-footer"></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

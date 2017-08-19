@@ -1,0 +1,69 @@
+<modalpopup [id]="'surveillanceForm'" (modalCloseEvent)="onModalCloseEmit($event)" [maximizable]="true" [size]="'large'"
+    *ngIf="resetFormState">
+    <modal-title>
+        Surveillance Detail Report
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-raised btn-default ion-android-download">
+                <a (click)="downloadDetailReport()">Export Detail Report</a></button>
+        </div>
+    </modal-title>
+    <modal-body>
+        <scrollto [containerIdentifier]="scrollXContainer" [direction]="scrollToDirection"></scrollto>
+        <div class="row" *ngIf="SurvResultDetail" scroll-to-element [containerXIdentifier]="scrollXContainer">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-heading row">
+                        <div id="search-result-header" class="card-title col-sm-4">Search Result(s)</div>
+                    </div>
+                    <div class="card-body pt0">
+                        <div id="scroll-y-container" class="table-responsive" sticky-horiscrollbar [containerXIdentifier]="scrollXContainer">
+                            <table class="table table-hover table-striped text-nowrap" sticky-header [containerXIdentifier]="scrollXContainer" [containerYIdentifier]="scrollYContainer">
+                                <thead>
+                                    <th *ngFor="let title of columnTitles; let i = index">
+                                        <a (click)="onColumnTitleClick(columnData[i])">{{title}}
+                                           <span *ngIf="columnData[i] == sortedByColumn && isDesc" class="ion-arrow-up-c"></span>
+                                           <span *ngIf="columnData[i] == sortedByColumn && !isDesc" class="ion-arrow-down-c"></span>
+                                        </a>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let res of SurvResultDetail | orderBy: {property: column, direction: direction}">
+                                        <td>{{res.reportDate}}</td>
+                                        <td>{{res.controlID}}</td>
+                                        <td>{{res.controlShortName}}</td>
+                                        <td>{{res.eventID}}</td>
+                                        <td>{{res.assetClass }}</td>
+                                        <td>{{res.instrument}}</td>
+                                        <td>{{res.USI}}</td>
+                                        <td>{{res.UTI}}</td>
+                                        <td>{{res.swapLinkID}}</td>
+                                        <td>{{res.buyerName}}</td>
+                                        <td>{{res.sellerName}}</td>
+                                        <td>{{res.buyUSDNotionalAmt}}</td>
+                                        <td>{{res.buyRatePrice}}</td>
+                                        <td>{{res.lastActionedOn}}</td>
+                                        <td>{{res.sellUSDNotionalAmt}}</td>
+                                        <td>{{res.sellRatePrice}}</td>
+                                        <td>{{res.numOfUnits}}</td>
+                                        <td>{{res.buyerTranscID}}</td>
+                                        <td>{{res.sellerTranscID}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-raised btn-primary ripple" (click)="onSubmit(false)">
+            Save
+            <span class="md-ripple"></span>
+        </button>
+        <button type="button" class="btn btn-raised btn-default ripple" (click)="hide()">
+            Cancel
+            <span class="md-ripple"></span>
+        </button>
+    </modal-footer>
+</modalpopup>

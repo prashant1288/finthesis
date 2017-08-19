@@ -1,0 +1,6 @@
+    <th *ngFor="let title of columnTitles; let i = index">
+        <a (click)="onColumnTitleClick(jsonAttributes[i])">{{title}}
+                <span *ngIf="jsonAttributes[i]==sortedByColumn && !sortDescending" class="ion-arrow-up-c"></span>
+                <span *ngIf="jsonAttributes[i]==sortedByColumn && sortDescending" class="ion-arrow-down-c"></span>
+            </a>
+    </th>

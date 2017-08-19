@@ -1,0 +1,90 @@
+<!--<h4>Print message: {{greeting}}</h4>-->
+<section>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <form method="get" action="/" class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Report &nbsp;&nbsp;From</label>
+                            <div class="col-sm-3">
+                                <!--   <input type="text" datepicker [defaultDate]="defaultFromDate" placeholder="yyyy-mm-dd" class="jquery-date-picker form-control input-with-clear" [(ngModel)]="reportFrom"
+                                    name="reportFrom">
+                                <span *ngIf="reportFrom" class="clear-input-btn" (click)="clearDateInput(reportFrom)"><em class="ion-close-round"></em></span> 
+                               -->
+                                <input type="date" [(ngModel)]="reportFrom" name="reportFrom" class="datepicker form-control input-with-clear">
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="row">
+                                    <label class="col-sm-1 control-label">To &nbsp;</label>
+                                    <div class="col-sm-10">
+                                        <!--     <input type="text" datepicker placeholder="yyyy-mm-dd" class="form-control input-with-clear" [(ngModel)]="reportTo"
+                                        name="reportTo">
+                                    <span *ngIf="reportTo" class="clear-input-btn" (click)="clearDateInput(reportTo)"><em class="ion-close-round"></em></span>
+                                -->
+                                        <input type="date" [(ngModel)]="reportTo" name="reportTo" class="datepicker form-control input-with-clear">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-raised btn-primary ripple" (click)="onSearch()">Search<span class="md-ripple"></span></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn btn-raised btn-default ripple" (click)="onSearchReset()">Reset<span class="md-ripple"></span></button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <scrollto [containerIdentifier]="scrollXContainer" [direction]="scrollToDirection"></scrollto>
+
+        <div class="row" *ngIf="SurvResultSummary" scroll-to-element [containerXIdentifier]="scrollXContainer">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-heading row">
+                        <div id="search-result-header" class="card-title col-sm-4">Search Result(s)</div>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-raised btn-default ion-android-download">
+                        <a (click)="downloadSummaryReport()">Export Summary Report</a></button>
+                        </div>
+                    </div>
+                    <div class="card-body pt0">
+                        <div id="scroll-y-container" class="table-responsive" sticky-horiscrollbar [containerXIdentifier]="scrollXContainer">
+                            <table class="table table-hover table-striped text-nowrap" sticky-header [containerXIdentifier]="scrollXContainer" [containerYIdentifier]="scrollYContainer">
+                                <thead>
+                                    <th *ngFor="let title of columnTitles; let i = index">
+                                        <a (click)="onColumnTitleClick(columnData[i])">{{title}}
+                                           <span *ngIf="columnData[i] == sortedByColumn && isDesc" class="ion-arrow-up-c"></span>
+                                           <span *ngIf="columnData[i] == sortedByColumn && !isDesc" class="ion-arrow-down-c"></span>
+                                        </a>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let res of SurvResultSummary | orderBy: {property: sortedByColumn, direction: direction}" (click)="onRowClick($event)"
+                                        (dblclick)="getDetails(res.reportDate,res.controlID)">
+                                        <td>{{res.evtDate}}</td>
+                                        <td>{{res.reportDate}}</td>
+                                        <td>{{res.lastRunDate}}</td>
+                                        <td>{{res.controlID}}</td>
+                                        <td>{{res.controlShortName}}</td>
+                                        <td>{{res.controlFullName }}</td>
+                                        <td>{{res.totalTradecount}}</td>
+                                        <td>{{res.alertCount}}</td>
+                                        <td>{{res.alertPassCount}}</td>
+                                        <td>{{res.actualFailCount}}</td>
+                                        <td>{{res.status}}</td>
+                                        <td>{{res.assignedTo}}</td>
+                                        <td>{{res.isEscalated}}</td>
+                                        <td>{{res.lastActionedBy}}</td>
+                                        <td>{{res.lastActionedOn}}</td>
+                                        <td>{{res.actionHistory}}</td>
+                                        <td>{{res.comments}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <surveillance-form></surveillance-form>
+    </div>
+</section>
