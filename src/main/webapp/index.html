@@ -1,14 +1,26 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Frontend</title>
-  <base href="/">
+<html lang="en">
 
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <title>📈Prototype</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,IE=11"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="description" content="FinThesis Prototype">
+  <meta name="keywords" content="">
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/jquery-ui/datepicker.css" rel="stylesheet" />
+  <link href="assets/ionicons/css/ionicons.css" rel="stylesheet" />
+  <link href="assets/app/loader.css" rel="stylesheet" />
+  <link href="assets/app/toaster.css" rel="stylesheet" />
+  <link href="assets/app/app.css" rel="stylesheet" />
+  <!-- <link rel="icon" type="image/x-icon" href="favicon.ico">  -->
 </head>
-<body>
-  <app-root>Loading...</app-root>
-<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+
+<body class="theme-1 modal-open">
+  <!--<loader><div data-loader="circle-side" *ngIf="showLoader"></div></loader>-->
+  <app-root></app-root>
+<script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="scripts.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+
 </html>

@@ -1,12 +1,12 @@
-package com.ft.prototype1;
+package com.prototype;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Prototype1Application {
+public class FinThesisApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Prototype1Application.class, args);
+		SpringApplication.run(FinThesisApplication.class, args);
 	}
 }
