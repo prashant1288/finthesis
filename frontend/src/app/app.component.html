@@ -1,3 +1,63 @@
-<h1>
-  {{title}}
-</h1>
+<div class="layout-container" [class.sidebar-visible]="sideBarVisible" [class.sidebar-offcanvas]="!sideBarVisible" [class.offcanvas-visible]="sideBarVisible">
+
+    <!-- top navbar-->
+    <header class="header-container">
+        <nav>
+            <ul>
+                <li [class.active]="sideBarVisible">
+                    <a class="app.header.menulink" class="menu-link menu-link-slide" (click)="toggleSideBar()">
+                        <span><em></em></span>
+                    </a>
+                </li>
+            </ul>
+            <h4 class="visible-xs header-title">Prototype</h4>
+            <h4 class="hidden-xs header-title">FinThesis Prototype</h4>
+            <em>v1.0</em>
+        </nav>
+    </header>
+
+    <!-- sidebar-->
+    <aside class="sidebar-container">
+        <div class="sidebar-header">
+            <div class="pull-right pt-lg text-muted hidden"><em class="ion-close-round"></em></div>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-toolbar text-center">
+                <a href=""><img src="assets/img/user/default.png" alt="Profile" class="img-circle thumb64"></a>
+                <div class="mt">Hello, User</div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a [routerLink]="['/surveillance']" routerLinkActive="router-link-active" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"></span>Surveillance</a></li>
+                    <li>
+                        <a [routerLink]="['/dashboard']" routerLinkActive="router-link-active" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"></span>Dashboard</a></li>
+                    <li>
+                        <a [routerLink]="['/configmgmt']" routerLinkActive="router-link-active" class="ripple"><span class="pull-right nav-label"></span><span class="nav-icon"></span>Config Management</a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="sidebar-layout-obfuscator" (click)="toggleSideBar()"></div>
+
+    <!-- Main section-->
+    <main id="main-container" class="main-container">
+        <section>
+            <div class="content-heading bg-white">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h4 class="m0 text-thin">{{getRouteName()}}</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page content-->
+            <router-outlet></router-outlet>
+
+        </section>
+
+        <!-- Page footer-->
+        <footer><span>FinThesis&copy;</span></footer>
+
+    </main>
+</div>
