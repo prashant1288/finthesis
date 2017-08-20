@@ -1,7 +1,8 @@
 import { Component, Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Rx';
-import {Response} from "@angular/http";
+//import {Response} from "@angular/http";
+import { Http, Response } from '@angular/http';
 import {LoaderService} from './shared/loader/loader.service';
 
 
