@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 export class DashboardService {
     private _productUrl = 'assets/products.json';
 
-    //   private _apiUrl = 'http://localhost:9090/' ;
+    //   private _apiUrl = 'http://localhost:8080/' ;
     //   controllerDashboard: string = 'dashboard/';
     //   getMessagePath:string = 'getMessage';
 

@@ -20,10 +20,10 @@ import com.prototype.service.SurveillanceService;
 @RequestMapping("/surveillance")
 public class SurveillanceController {
 
-	@Value("${report.name}")
+	//@Value("${report.name}")
 	private String reportName;
 
-	@Value("${report.ext}")
+	//@Value("${report.ext}")
 	private String reportExt;
 
 	@Autowired
@@ -34,7 +34,7 @@ public class SurveillanceController {
 		return this.surveillanceService.getResultSummary();
 	}
 
-	@RequestMapping(path = "/detailreport", method = RequestMethod.GET)
+	/*@RequestMapping(path = "/detailreport", method = RequestMethod.GET)
 	public HttpEntity<byte[]> getPacketDetailReport(@PathVariable("reportDate") Integer reportDate) {
 
 		final byte[] documentBody = this.surveillanceService.getSurvSummaryReport(reportDate);
@@ -49,6 +49,6 @@ public class SurveillanceController {
 		}
 
 		return new HttpEntity<byte[]>(documentBody, header);
-	}
+	}*/
 
 }
